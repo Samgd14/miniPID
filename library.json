@@ -1,0 +1,15 @@
+{
+    "name": "miniPID",
+    "keywords": "pid,motor,control,lopp",
+    "description": "Light library to calculate a PID",
+    "repository":
+    {
+      "type": "git",
+      "url": "n/a"
+    },
+    "version": "0.1.0",
+    "frameworks": "arduino",
+    "platforms": "*"
+  }
+  
+  
