@@ -84,3 +84,10 @@ If a range is specified, it will return true if the last calculated error is in 
 double getError()
 ```
 Returns the last calculated error.
+
+---
+
+```c++
+void reset()
+```
+Resets every accumulated/output value to 0.

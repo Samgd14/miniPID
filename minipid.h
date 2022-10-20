@@ -100,6 +100,21 @@ class pid{
             return error;
         }
 
+        //Resets every accumulated/output value to 0
+        void reset(){
+            out = 0;
+            limitedOut = 0;
+
+            error = 0;
+            lastError = 0;
+
+            deltaT = 0;
+            lastDeltaT = 0;
+
+            integral = 0;
+            derivative = 0;
+        }
+
     private:
         double kp, ki, kd; // Multipliers for the proportionnal, integral and differential factors
         double out, limitedOut; // Output variable, contains the last calculated output
