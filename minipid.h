@@ -53,16 +53,6 @@ class pid{
             
             out = (kp * error) + (ki * integral) + (kd * derivative);
 
-            if(out > maxOutput){
-                limitedOut = maxOutput;
-            }
-            else if(out < minOutput){
-                limitedOut = minOutput;
-            }
-            else{
-                limitedOut = out;
-            }
-
             lastDeltaT = deltaT;
             lastError = error;
 
@@ -76,7 +66,25 @@ class pid{
 
         // Returns the current limited output
         double limitedOutput(){
+            if(out > maxOutput){
+                limitedOut = maxOutput;
+            }
+            else if(out < minOutput){
+                limitedOut = minOutput;
+            }
+            else{
+                limitedOut = out;
+            }
+
             return limitedOut;
+        }
+
+        //Returns if the PID has reached it's desired value
+        bool isDone(){
+            if(error == 0){
+                return true;
+            }
+            return false;
         }
 
         //Returns if the PID has reached it's desired value in a limited range
@@ -87,12 +95,9 @@ class pid{
             return false;
         }
 
-        //Returns if the PID has reached it's desired value
-        bool isDone(){
-            if(error == 0){
-                return true;
-            }
-            return false;
+        //Returns the last calculated error
+        double getError(){
+            return error;
         }
 
     private:
