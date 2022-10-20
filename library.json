@@ -1,14 +1,14 @@
 {
     "name": "miniPID",
-    "keywords": "pid,motor,control,lopp",
-    "description": "Light library to calculate a PID",
+    "keywords": "pid,motor,control,loop",
+    "description": "Simple library to calculate a PID",
     "repository":
     {
       "type": "git",
-      "url": "n/a"
+      "url": "https://github.com/Samgd14/miniPID"
     },
     "version": "0.1.0",
-    "frameworks": "arduino",
+    "frameworks": "*",
     "platforms": "*"
   }
   
