@@ -28,7 +28,11 @@ Sets the `ki`, `kp`, and `kd` values after initialization.
 
 ```c++
 void setKp(double kp)
+```
+```c++
 void setKi(double ki)
+```
+```c++
 void setKd(double kd)
 ```
 Individually sets the PID constants for the controller.
@@ -67,6 +71,8 @@ Returns the output last computed by the `update` function, but clamped within `m
 
 ```c++
 bool isDone()
+```
+```c++
 bool isDone(double range)
 ```
 Returns true if the last calculated error is equal to zero.
