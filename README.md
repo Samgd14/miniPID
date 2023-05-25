@@ -1,6 +1,8 @@
 miniPID
 ======
 Simple and light library to calculate a PID!
+I'm currently working on this version, so use the previous release if you use it in projects.
+This new version will break compatibility on the value limiter and introduce new rate and acceleration limiters.
 
 Initialization
 ------

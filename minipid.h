@@ -5,15 +5,17 @@ class pid{
             kp = kp_t;
             ki = ki_t;
             kd = kd_t;
+            vLimiter = false;
             maxOutput = 1;
             minOutput = -1;
         }
 
-        // Initializes the class with the constants and output llimits
+        // Initializes the class with the constants and position limits, and enables it
         pid(double kp_t, double ki_t, double kd_t, double maxOutput_t, double minOutput_t){
             kp = kp_t;
             ki = ki_t;
             kd = kd_t;
+            vLimiter = true;
             maxOutput = maxOutput_t;
             minOutput = minOutput_t;
         }
@@ -36,8 +38,21 @@ class pid{
             kd = kd_t;
         }
 
-        //Used to change output limits after initialization
-        void setLimits(double maxOutput_t, double minOutput_t){
+        //Returns the value limiter's current state
+        bool pLimit(){
+            return vLimiter;
+        }
+
+        //Edits and returns the value limiter's current state
+        bool pLimit(bool vLimiter_t){
+            vLimiter = vLimiter_t;
+
+            return vLimiter;
+        }
+
+        //Edits the value limiter's values and enables it
+        void pLimit(double maxOutput_t, double minOutput_t){
+            vLimiter = true;
             maxOutput = maxOutput_t;
             minOutput = minOutput_t;
         }
@@ -53,8 +68,19 @@ class pid{
             
             out = (kp * error) + (ki * integral) + (kd * derivative);
 
+            rawOut = out;
+
             lastDeltaT = deltaT;
             lastError = error;
+
+            if(vLimiter){
+                if(out > maxOutput){
+                    out = maxOutput;
+                }
+                else if(out < minOutput){
+                    out = minOutput;
+                }
+            }
 
             return true;
         }
@@ -62,21 +88,6 @@ class pid{
         // Returns the current output
         double output(){
             return out;
-        }
-
-        // Returns the current limited output
-        double limitedOutput(){
-            if(out > maxOutput){
-                limitedOut = maxOutput;
-            }
-            else if(out < minOutput){
-                limitedOut = minOutput;
-            }
-            else{
-                limitedOut = out;
-            }
-
-            return limitedOut;
         }
 
         //Returns if the PID has reached it's desired value
@@ -103,7 +114,7 @@ class pid{
         //Resets every accumulated/output value to 0
         void reset(){
             out = 0;
-            limitedOut = 0;
+            rawOut = 0;
 
             error = 0;
             lastError = 0;
@@ -117,10 +128,12 @@ class pid{
 
     private:
         double kp, ki, kd; // Multipliers for the proportionnal, integral and differential factors
-        double out, limitedOut; // Output variable, contains the last calculated output
+        double out, rawOut; // Output variable, contains the last calculated output
         double maxOutput, minOutput; // Maximum/minimum value for the output
 
         double error, lastError; // Calculated errors for the PID calculation
         double deltaT, lastDeltaT; // Time deltas for calculating derivatives and integrals
         double integral, derivative; // Parameters for integrals and derivatives
+
+        bool vLimiter, rLimiter;
 };
