@@ -15,7 +15,7 @@ class PID{
     PID(double kp_, double ki_, double kd_, double maxValue_, double minValue_, double maxRate_, double minRate_);
 
     // Used to update constants after initialization
-    void values(double kp_, double ki_, double kd_)
+    void setKs(double kp_, double ki_, double kd_)
     {kp = kp_; ki = ki_; kd = kd_;}
 
     // Used to change individual constants after initialization
@@ -37,13 +37,13 @@ class PID{
     {return vLimiter;}
 
     //Edits and returns the value limiter's current state
-    bool setVLimit(bool vLimiter_){
+    bool enableVLimit(bool vLimiter_){
         vLimiter = vLimiter_;
         return vLimiter;
     }
 
-    //Edits the value limiter's limits
-    void editVLimit(double maxValue_, double minValue_){
+    //Sets the value limiter's limits
+    void setVLimit(double maxValue_, double minValue_){
         maxValue = maxValue_;
         minValue = minValue_;
     }
@@ -57,13 +57,13 @@ class PID{
     {return rLimiter;}
 
     //Edits and returns the rate limiter's current state
-    bool setRLimit(bool rLimiter_){
+    bool enableRLimit(bool rLimiter_){
         rLimiter = rLimiter_;
         return rLimiter;
     }
 
-    //Edits the value limiter's limits
-    void editRLimit(double maxRate_, double minRate_){
+    //Sets the rate limiter's limits
+    void setRLimit(double maxRate_, double minRate_){
         maxRate = maxRate_;
         minRate = minRate_;
     }
