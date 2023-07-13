@@ -1,3 +1,6 @@
+#ifndef LibExample_H_
+#define LibExample_H_
+
 class PID{
     public:
 
@@ -120,3 +123,4 @@ class PID{
     double currentRate; //Current calculated rate for the rate limiter
     bool vLimiter = false, rLimiter = false; //Limiter states
 };
+#endif
