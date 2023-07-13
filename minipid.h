@@ -8,6 +8,9 @@ class miniPID{
     Class constructors
     */
 
+    //Initializes the class alone
+    miniPID();
+
     // Initializes the class with the constants
     miniPID(double kp_, double ki_, double kd_);
 
@@ -111,7 +114,7 @@ class miniPID{
 
     private:
 
-    double kp, ki, kd; // Multipliers for the proportionnal, integral and differential factors
+    double kp = 0, ki = 0, kd = 0; // Multipliers for the proportionnal, integral and differential factors
     double out, rawOut, lastOut; // Output variable, contains the last calculated output
     
     double error, lastError; // Calculated errors for the PID calculation
