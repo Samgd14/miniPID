@@ -50,7 +50,7 @@ bool PID::update(double input, double target, double delay){
         else if(out < minValue){
             out = minValue;
         }
-    }  
+    }
 
     //If enabled, caps the rate of change of the output
     if(rLimiter){
