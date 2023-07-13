@@ -1,14 +1,14 @@
 #include "miniPID.h"
 
 // Initializes the class with the constants
-PID::PID(double kp_, double ki_, double kd_){
+miniPID::miniPID(double kp_, double ki_, double kd_){
     kp = kp_;
     ki = ki_;
     kd = kd_;
 }
 
 // Initializes the class with the constants and position limits, and enables it
-PID::PID(double kp_t, double ki_t, double kd_t, double maxValue_t, double minValue_t){
+miniPID::miniPID(double kp_t, double ki_t, double kd_t, double maxValue_t, double minValue_t){
     kp = kp_t;
     ki = ki_t;
     kd = kd_t;
@@ -17,7 +17,7 @@ PID::PID(double kp_t, double ki_t, double kd_t, double maxValue_t, double minVal
     minValue = minValue_t;
 }
 
-PID::PID(double kp_, double ki_, double kd_, double maxValue_, double minValue_, double maxRate_, double minRate_){
+miniPID::miniPID(double kp_, double ki_, double kd_, double maxValue_, double minValue_, double maxRate_, double minRate_){
     kp = kp_;
     ki = ki_;
     kd = kd_;
@@ -30,7 +30,7 @@ PID::PID(double kp_, double ki_, double kd_, double maxValue_, double minValue_,
 }
 
 // Updates the PID's output calculation
-bool PID::update(double input, double target, double delay){
+bool miniPID::update(double input, double target, double delay){
     
     deltaT = delay / 1000;
     error = target - input; //Calculates the error
@@ -72,7 +72,7 @@ bool PID::update(double input, double target, double delay){
 }
 
 //Resets every accumulated/output value to 0
-void PID::reset(){
+void miniPID::reset(){
     out = 0;
     rawOut = 0;
     lastOut = 0;

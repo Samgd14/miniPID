@@ -1,7 +1,7 @@
 #ifndef LibExample_H_
 #define LibExample_H_
 
-class PID{
+class miniPID{
     public:
 
     /*
@@ -9,13 +9,13 @@ class PID{
     */
 
     // Initializes the class with the constants
-    PID(double kp_, double ki_, double kd_);
+    miniPID(double kp_, double ki_, double kd_);
 
     // Initializes the class with the constants and position limits, and enables it
-    PID(double kp_, double ki_, double kd_, double maxValue_, double minValue_);
+    miniPID(double kp_, double ki_, double kd_, double maxValue_, double minValue_);
 
     // Initializes the class with the constants and position limits, and enables it
-    PID(double kp_, double ki_, double kd_, double maxValue_, double minValue_, double maxRate_, double minRate_);
+    miniPID(double kp_, double ki_, double kd_, double maxValue_, double minValue_, double maxRate_, double minRate_);
 
     // Used to update constants after initialization
     void setKs(double kp_, double ki_, double kd_)
