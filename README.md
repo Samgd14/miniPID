@@ -8,21 +8,21 @@ The new version of the value limiter and the rate limiter are now implemented.
 Constructors
 ------
 ```c++
-PID(double kp, double ki, double kd)
+miniPID(double kp, double ki, double kd)
 ```
 Creates an object using the specified PID parameters and with the limited output set to the default values (-1 to 1).
 
 ---
 
 ```c++
-PID(double kp, double ki, double kd, double maxValue, double minValue)
+miniPID(double kp, double ki, double kd, double maxValue, double minValue)
 ```
 Creates an object using the specified PID parameters and with the value limiter enabled on the output.
 
 ---
 
 ```c++
-PID(double kp, double ki, double kd, double maxValue, double minValue, double maxRate, double minRate)
+miniPID(double kp, double ki, double kd, double maxValue, double minValue, double maxRate, double minRate)
 ```
 Creates an object using the specified PID parameters and with the value limiter enabled on the output.
 
