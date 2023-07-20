@@ -1,5 +1,5 @@
-#ifndef LibExample_H_
-#define LibExample_H_
+#ifndef minipid_h
+#define minipid_h
 
 class miniPID{
     public:
