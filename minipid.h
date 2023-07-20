@@ -9,7 +9,7 @@ class miniPID{
     */
 
     //Initializes the class alone
-    miniPID();
+    miniPID(){};
 
     // Initializes the class with the constants
     miniPID(double kp_, double ki_, double kd_);
