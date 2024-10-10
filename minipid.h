@@ -118,7 +118,7 @@ class miniPID{
     double out, rawOut, lastOut; // Output variable, contains the last calculated output
     
     double error, lastError; // Calculated errors for the PID calculation
-    double deltaT, lastDeltaT; // Time deltas for calculating derivatives and integrals
+    double deltaT; // Time deltas for calculating derivatives and integrals
     double integral, derivative; // Parameters for integrals and derivatives
 
     double maxValue = 0, minValue = 0; // Maximum/minimum value for the output

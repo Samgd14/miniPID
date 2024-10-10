@@ -1,13 +1,13 @@
 #include "miniPID.h"
 
-// Initializes the class with the constants
+// Initializes the class with the PID coefficients
 miniPID::miniPID(double kp_, double ki_, double kd_){
     kp = kp_;
     ki = ki_;
     kd = kd_;
 }
 
-// Initializes the class with the constants and position limits, and enables it
+// Initializes the class with the PID coefficients, value limiter constants, and enables the latter
 miniPID::miniPID(double kp_t, double ki_t, double kd_t, double maxValue_t, double minValue_t){
     kp = kp_t;
     ki = ki_t;
@@ -17,6 +17,7 @@ miniPID::miniPID(double kp_t, double ki_t, double kd_t, double maxValue_t, doubl
     minValue = minValue_t;
 }
 
+// Initializes the class with the PID coefficients, value/rate limiter constants, and enables both limiters
 miniPID::miniPID(double kp_, double ki_, double kd_, double maxValue_, double minValue_, double maxRate_, double minRate_){
     kp = kp_;
     ki = ki_;
@@ -35,8 +36,8 @@ bool miniPID::update(double input, double target, double delay){
     deltaT = delay / 1000;
     error = target - input; //Calculates the error
     
-    integral = integral + (error * deltaT);
-    derivative = (error / deltaT) - (lastError / lastDeltaT);
+    integral += error * deltaT;
+    derivative = (error - lastError) / deltaT;
     
     out = (kp * error) + (ki * integral) + (kd * derivative);
 
@@ -65,7 +66,6 @@ bool miniPID::update(double input, double target, double delay){
     }
 
     lastOut = out;
-    lastDeltaT = deltaT;
     lastError = error;
 
     return true;
@@ -83,7 +83,6 @@ void miniPID::reset(){
     lastError = 0;
 
     deltaT = 0;
-    lastDeltaT = 0;
 
     integral = 0;
     derivative = 0;
